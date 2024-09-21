@@ -49,7 +49,7 @@ export class HttpServiceService {
       this.form.error = true;
       this.userparams.url = this.router.url;// to navigate the URI request.
       this.router.navigateByUrl("/login");
-      console.log("Aakash");
+      console.log("UTKARSH VERMA");
   
     return true;
       } else {
@@ -65,7 +65,7 @@ export class HttpServiceService {
     }
     return this.httpClient.get(endpoint).subscribe((data) => {
       console.log('Data :: ' + data);
-      callback(data);
+      callback(data); 
 
     });
   }
@@ -76,7 +76,7 @@ export class HttpServiceService {
       return true;
     }
     return this.httpClient.post(endpoint, bean).subscribe((data) => {
-      console.log(data);
+      console.log('ORS Success--',data);
       callback(data);
 
     }, error => {

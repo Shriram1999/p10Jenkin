@@ -23,7 +23,7 @@ export class BaseListCtl extends BaseCtl {
   ngOnInit() {   
     this.preload();
     this.search();
-    this.isMasterSel = false ;
+    this.isMasterSel= false;
   }
 
   display() {
@@ -50,7 +50,7 @@ export class BaseListCtl extends BaseCtl {
 
   next() {
     this.form.pageNo++;
-    this.isMasterSel = false;
+    this.isMasterSel= false;
      this.display(); 
    
    
@@ -84,8 +84,8 @@ exit(){
     this.isMasterSel=false;
     this.checkList=0;
     this.checkboxes.forEach((element) =>{
-if(element.nativeElement.checked==true){
-  this.checkList=this.checkList+1;
+     if(element.nativeElement.checked==true){
+     this.checkList=this.checkList+1;
 }
     });
     if(this.checkList==this.form.list.length){

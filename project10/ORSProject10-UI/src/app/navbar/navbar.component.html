@@ -1,6 +1,6 @@
 <style type="text/css">
   .raj{
-  background-image : linear-gradient(to bottom right, rgb(32, 129, 168), rgb(225, 219, 237));}
+  background-image : linear-gradient(to bottom right, rgb(8, 244, 244), rgb(30, 152, 213));}
 
   .c1{
 color: rgb(235, 6, 6);
@@ -32,7 +32,8 @@ color: rgb(235, 6, 6);
     <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 15px;">
       <ul class="navbar-nav ml-auto" style="padding-right: 6.5%;">
         
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" [routerLink]="['myNav']" id="navbarDropdown" role="button"
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" [routerLink]="['myNav']" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <font style="color: white;">{{'Hi,Guest'| translate}}
             </font>
@@ -41,8 +42,7 @@ color: rgb(235, 6, 6);
 
           <div class="dropdown-menu" id="myNav" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['/login']"><i class="fa fa-user"></i> &nbsp; &nbsp; &nbsp; {{'Log in' | translate}}</a>
-            <a class="dropdown-item" [routerLink]="['/signup']"><i class=" fa fa-users"></i> &nbsp; {{'User Registration' |
-              translate}}</a>
+            <a class="dropdown-item" [routerLink]="['/signup']"><i class=" fa fa-users"></i> &nbsp; {{'User Registration' | translate}}</a>
           </div>
         </li>
         <li>
@@ -67,7 +67,7 @@ color: rgb(235, 6, 6);
 
 
   <select #locale (click)='changeLocale(locale.value)'>
-     <option value="hi">{{'Select Language' | translate }}</option>
+     <option value="">{{'Select Language' | translate }}</option>
     <option value="en">English</option>
     <option value="hi">{{'Hindi' | translate }}</option>
   </select>
@@ -77,10 +77,12 @@ color: rgb(235, 6, 6);
     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarNav">
 
+
     <div class="col-sm-2"></div>
+
+
 
     <ul class="nav navbar-nav pl-2 ">
 
@@ -89,7 +91,6 @@ color: rgb(235, 6, 6);
           id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <font style="color: white;">{{'User' | translate}}</font>
         </a>
-
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/user']"><i class="fa fa-user"></i> &nbsp; &nbsp;{{'Add User' |
             translate}}</a>
@@ -102,10 +103,8 @@ color: rgb(235, 6, 6);
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/marksheet']"><i class="fa fa-file"></i> &nbsp; {{'Add Marksheet' |
-            translate}}</a> 
-            <a class="dropdown-item" [routerLink]="['/marksheetlist']"><i class="fa fa-paste"></i> &nbsp;
-            {{'Marksheet List' | translate}}</a> 
-            <a class="dropdown-item" [routerLink]="['/marksheetmeritlist']"><i
+            translate}}</a> <a class="dropdown-item" [routerLink]="['/marksheetlist']"><i class="fa fa-paste"></i> &nbsp;
+            {{'Marksheet List' | translate}}</a> <a class="dropdown-item" [routerLink]="['/marksheetmeritlist']"><i
               class=" fa fa-list"></i> &nbsp; {{'Marksheet Merit List' | translate}} </a>
           <a class="dropdown-item" [routerLink]="['/getmarksheet']"><i class="fa fa-copy"></i> &nbsp; {{'Get Marksheet' |
             translate}}</a>
@@ -170,8 +169,7 @@ color: rgb(235, 6, 6);
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/timetable']"><i class="fa fa-clock-o"></i> &nbsp; {{'Add TimeTable'
-            | translate}}</a>
-             <a class="dropdown-item" [routerLink]="['/timetablelist']"><i class="fa fa-list"></i> &nbsp;
+            | translate}}</a> <a class="dropdown-item" [routerLink]="['/timetablelist']"><i class="fa fa-list"></i> &nbsp;
             {{'TimeTable List' | translate}}</a>
         </div>
       </li>

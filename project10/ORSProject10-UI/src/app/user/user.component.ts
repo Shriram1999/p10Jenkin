@@ -31,18 +31,21 @@ export class UserComponent extends BaseCtl {
       _self.form.message = '';
       _self.form.data.id = res.result.data;
       if (_self.fileToUpload) {
-        console.log('Aakash');
+        console.log('Utkarsh');
         _self.myFile();
       }
-      if (res.success) {
-        _self.form.message = "Data is saved";
+     
+      
+      if (res.success ) {
+       _self.form.message = "data is saved";  
         _self.form.data.id = res.result.data;
 
         console.log(_self.form.data.id);
-        console.log("----------Dheeraj----------.");
+        console.log("----------Utkarsh----------.");
 
       } else {
         _self.form.error = true;
+
         if (res.result.inputerror) {
           _self.form.inputerror = res.result.inputerror;
         }

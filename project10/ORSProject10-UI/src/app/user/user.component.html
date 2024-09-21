@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <style>
   .grad {
-    background-image: linear-gradient(to bottom right, rgb(32, 132, 168), rgb(219, 231, 237));
+    background-image: linear-gradient(to bottom right, rgb(32, 168, 168), rgb(219, 231, 237));
     background-repeat: no repeat;
     background-size: 100%;
     padding-bottom: 25px;
@@ -36,16 +36,17 @@ background-size: cover;width:100%;
           <h2 *ngIf="form.data.id>0" class="text-primary font-weight-bold" style="text-align: center;">{{'Update User' |
             translate }}</h2>
 
+            <div *ngIf="form.error && form.message != null" class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{form.message}}
+            </div>
 
           <div *ngIf="!form.error && form.message != null" class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             {{form.message}}
           </div>
 
-          <div *ngIf="form.error && form.message != null" class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{form.message}}
-          </div>
+          
 
           <div>
             <span class="pt-2"><b>{{'Role Name' | translate }}</b>
@@ -220,7 +221,7 @@ background-size: cover;width:100%;
               <div *ngIf="!form.data.imageId">
                 <img src="../../assets/files/default.jpg" height="55px" width="80px">
               </div>
-            </div>
+            </div> 
             <div class="col-sm-12">
               <div class="input-group">
                 <div class="input-group-prepend">

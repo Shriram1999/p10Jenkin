@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <style>
   .grad{
- background-image: linear-gradient(to bottom right, rgb(32, 123, 168), rgb(219, 231, 237));
+ background-image: linear-gradient(to bottom right, rgb(47, 77, 77), rgb(98, 103, 105));
  background-repeat: no repeat;
  background-size: 100%;
  padding-bottom: 25px
@@ -11,7 +11,7 @@
 </style>
 
 <div class="row " style="padding-top: 3%; padding-bottom:3%;
-background: url(assets/files/wall.jpg) no-repeat center center;
+background: url(assets/files/31.jpg) no-repeat center center;
 background-attachment: fixed;
 background-size: cover;width:auto;
   height: auto;">
@@ -21,8 +21,8 @@ background-size: cover;width:auto;
     <div class="card">
       <div class="card-body shadow-lg grad">
         <form>
-          <h2 *ngIf="!form.data.id>0" class="text-primary font-weight-bold "style="text-align: center;">{{'Add Marksheet' | translate}}</h2>
-          <h2 *ngIf="form.data.id>0" class="text-primary font-weight-bold" style="text-align: center;">{{'Update Marksheet' | translate}}</h2>
+          <h2 *ngIf="!form.data.id>0" class="text-primary font-weight-bold">{{'Add Marksheet' | translate}}</h2>
+          <h2 *ngIf="form.data.id>0" class="text-primary font-weight-bold">{{'Update Marksheet' | translate}}</h2>
           
           <div *ngIf="!form.error && form.message != null" class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -115,7 +115,7 @@ background-size: cover;width:auto;
           </div>
          
          
-          <div class="row pt-2 pl-2 pb-3">
+          <div class="row pt-3 pl-3 pb-3">
             <div class="pt-2">
               <button *ngIf="!form.data.id>0" (click)="submit()"  class="btn btn-success mr-2">
                 {{'Save' | translate}}</button>

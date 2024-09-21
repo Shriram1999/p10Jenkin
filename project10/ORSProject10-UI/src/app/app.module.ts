@@ -26,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { MessageListComponent } from './message/message-list.component';
 import { MarksheetListComponent } from './marksheet/marksheet-list.component';
 import { CollegeListComponent } from './college/college-list.component';
+
 import { StudentListComponent } from './student/student-list.component';
 import { UserComponent } from './user/user.component';
 
@@ -54,6 +55,11 @@ import { AuthService } from './auth.service';
 import {MyprofileComponent} from './user/myprofile.component';
 import { JasperReportComponent } from './jasper-report/jasper-report.component';
 
+
+
+
+
+ 
 // import { AuthService } from './auth.service';
 
 
@@ -100,7 +106,12 @@ export function myHttpLoader(http: HttpClient) {
     SpinnerComponent,
     FooterComponent,
     MyprofileComponent,
-    JasperReportComponent
+    JasperReportComponent,
+    
+   
+     
+     
+    
     
 
   ],

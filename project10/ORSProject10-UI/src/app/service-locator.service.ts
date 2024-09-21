@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpServiceService } from './http-service.service';
+
 import { DataValidator } from './utility/data-validator';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EndpointServiceService } from './endpoint-service.service';
@@ -39,10 +40,8 @@ export class ServiceLocatorService {
    * Forward to page 
    * 
    * @param page 
-   */ 
+   */
   forward(page){
     this.router.navigateByUrl(page);
   }
 }
- 
-

@@ -35,7 +35,6 @@ import { LoaderComponent } from './loader/loader.component';
 import { SpinnerComponent} from './spinner/spinner.component';
 import {MyprofileComponent} from './user/myprofile.component';
 import {JasperReportComponent} from './jasper-report/jasper-report.component';
-
 const routes: Routes = [
     {
         path: '',
@@ -245,6 +244,7 @@ const routes: Routes = [
     {   path :'changepassword',
         component : ChangepasswordComponent
       
+
     }, 
 
     {   path :'jasperReport',

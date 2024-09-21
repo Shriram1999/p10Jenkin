@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { HttpServiceService } from '../http-service.service';
@@ -6,7 +7,6 @@ import { DataValidator } from '../utility/data-validator';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceLocatorService } from '../service-locator.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class LoginComponent implements OnInit {
 
-  endpoint = "http://localhost:8080/Auth";
+  endpoint = "http://localhost:8084/Auth";
 
   form = {
     error: false,
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   };
 
 
-  constructor(private httpService: HttpServiceService, private httpClient:HttpClient, private dataValidator: DataValidator, private router: Router,
+  constructor(private httpService: HttpServiceService, private dataValidator: DataValidator, private router: Router,
     private cookieService: CookieService, private route: ActivatedRoute, private serviceLocator: ServiceLocatorService) {
 
   }
@@ -84,57 +84,60 @@ export class LoginComponent implements OnInit {
   validate() {
     let flag = true;
     flag = flag && this.dataValidator.isNotNull(this.form.loginId);
-    console.log("in login component");
     console.log(this.form.loginId);
     flag = flag && this.dataValidator.isNotNull(this.form.password);
     console.log(this.form.password);
     return flag;
   }
 
+
   signIn() {
+    var _self = this;   
     this.form.error = false;
-    
-    // Construct query parameters
-    
-    const queryParams = new URLSearchParams({
-     loginId: this.form.loginId,
-      password: this.form.password
-    }).toString();
-  
-    // Perform the GET request with query parameters
-    // this.httpClient.get(this.endpoint + '/login?' + queryParams).subscribe(
+    const requestedUrl = this.httpService.userparams.url;//to get the URI
+    console.log('signIn----', this.form);
+    this.httpService.post(this.endpoint + "/login", this.form, function (res) {
 
-   // this.httpClient.get('http://localhost:8080/login?loginid=' +encodeURIComponent(this.form.loginId) + '&password=' + encodeURIComponent(this.form.password)).subscribe(
-    //cont url=(`http://localhost:8080/login?loginid=${this.form.loginId}&password=${this.form.password}`)
+      console.log('MyResponse', res);
 
-    this.httpClient.get(
-      `${"http://localhost:8080/Auth"}/login?loginId=${this.form.loginId}&password=${this.form.password}`
-    ).subscribe(
-      (res: any) => {
-    // (res: any) => {
-        if (res && res.success) { 
-          // Store the token and user info in local storage or session storage
-          localStorage.setItem('token', res.result.token);
-          localStorage.setItem('loginId', res.result.loginId);
-          localStorage.setItem('role', res.result.role);
-          localStorage.setItem('fname', res.result.fname);
-          localStorage.setItem('lname', res.result.lname);
-  
-          // Navigate to the dashboard
-          this.router.navigateByUrl('dashboard');
-        } else {
-          // Handle login failure
-          this.form.error = true;
-          this.form.message = 'Login failed. Please check your credentials and try again.';
-        }
-      },
-      (error) => {
-        //console.error('Error during sign-in:', error);
-        this.form.error = true;
-        this.form.message = 'An error occurred while trying to sign in. Please try again later.';
+      
+
+      
+      _self.form.message = '';
+      _self.inputerror = {};
+      //_self.form.loginId = res.result.loginId;
+      if (_self.dataValidator.isNotNullObject(res.result.message)) {
+        _self.form.message = res.result.message;
       }
-    );
+
+      _self.form.error = !res.success;
+
+      if (_self.dataValidator.isNotNullObject(res.result.inputerror)) {
+        _self.inputerror = res.result.inputerror;
+      }
+
+      if (_self.dataValidator.isTrue(res.success)) {
+
+        _self.httpService.setToken(res.result.token);
+        localStorage.setItem("loginId", res.result.loginId);
+        let tokenStr = "Bearer " + res.result.token;
+        localStorage.setItem("token", tokenStr);
+        localStorage.setItem("role", res.result.role);
+        localStorage.setItem("fname", res.result.fname);
+        localStorage.setItem("lname", res.result.lname);
+        localStorage.setItem("userid", res.result.data.id);
+     //   console.log(res.result.data.id + 'sessionId set ----');
+     //   console.log(res.result.token + '  Token set ----');
+
+
+        if (requestedUrl != null && requestedUrl != '') {
+          _self.router.navigateByUrl(requestedUrl);
+          
+        } else {
+          _self.router.navigateByUrl('dashboard');
+        }
+      }
+    });
   }
-  
 
 }
